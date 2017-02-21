@@ -49,6 +49,10 @@ stage("js2") {
 ut.s()
 pSt.s()
 
+stage('restart now'){
+	input message: 'Restarted?'
+}
+
 ut.sMod()
 stage("js mod in ut") {
 	node {
