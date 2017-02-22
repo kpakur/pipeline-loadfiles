@@ -11,6 +11,19 @@ echo '============= BRANCH=' + branchName
 echo '============= BUILD NUMBER=' + buildNumber
 echo '============= BUILD VERSION=' + buildVersion
 
+stage('restart now'){
+	input message: 'Restarted?'
+}
+
+stage("js2") {
+	node {
+		echo '============= BRANCH=' + branchName
+		echo '============= BUILD NUMBER=' + buildNumber
+		echo '============= BUILD VERSION=' + buildVersion
+		echo '============= commit id=' + commitId
+	}
+}
+
 
 stage('checkout'){
 	node {
@@ -54,9 +67,7 @@ stage('restart now'){
 }
 
 stage("js2") {
-	buildVersion = 'mod in main in stage not node'
 	node {
-		branchName = 'md in main and in node'
 		echo '============= BRANCH=' + branchName
 		echo '============= BUILD NUMBER=' + buildNumber
 		echo '============= BUILD VERSION=' + buildVersion
