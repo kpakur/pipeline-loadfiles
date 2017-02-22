@@ -53,6 +53,19 @@ stage('restart now'){
 	input message: 'Restarted?'
 }
 
+stage("js2") {
+	buildVersion = 'mod in main in stage not node'
+	node {
+		branchName = 'md in main and in node'
+		echo '============= BRANCH=' + branchName
+		echo '============= BUILD NUMBER=' + buildNumber
+		echo '============= BUILD VERSION=' + buildVersion
+		echo '============= commit id=' + commitId
+	}
+}
+ut.s()
+pSt.s()
+
 ut.sMod()
 stage("js mod in ut") {
 	node {
