@@ -1,25 +1,19 @@
 #!groovy
 
-def s(){
-    stage("S1") {
+def standardP(){
+    stage("Print Gl before") {
         node {
-            echo '============= BRANCH=' + branchName
-            echo '============= BUILD NUMBER=' + buildNumber
-            echo '============= BUILD VERSION=' + buildVersion
-            echo '============= commit id=' + commitId
+            ut.printGlobV('before')
         }
     }
-}
 
-def sMod(){
-    stage("SMod") {
-        buildVersion = 'mod in St in stage not node'
+    stage('restart now'){
+        input message: 'Restarted?'
+    }
+
+    stage("Print Gl after") {
         node {
-            branchName = 'md in ST and in node'
-            echo '============= BRANCH=' + branchName
-            echo '============= BUILD NUMBER=' + buildNumber
-            echo '============= BUILD VERSION=' + buildVersion
-            echo '============= commit id=' + commitId
+            ut.printGlobV('after')
         }
     }
 }
